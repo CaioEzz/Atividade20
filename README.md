@@ -1,12 +1,12 @@
-<img width="1844" height="893" alt="image" src="https://github.com/user-attachments/assets/3582ad88-29e6-41cd-a86e-9c625d794939" /><img width="1851" height="926" alt="image" src="https://github.com/user-attachments/assets/875fa0b6-cf38-422d-907d-fc941fc68ed2" /># 📚 Estante Viva — Catálogo de Livros
+# 📚 Estante Viva — Catálogo de Livros
 
 **Disciplina:** Programação para Internet
 **Tecnologia:** Python + Django 5
 **Tema escolhido:** Catálogo de Livros
 
 ## Integrantes da dupla
-- Nome do Integrante 1
-- Nome do Integrante 2
+- Caio Enzo Besssa de Oliveira
+- Douglas Emanuel Silva
 
 ## Descrição
 Aplicação web que lista livros e permite pesquisar, filtrar e paginar os registros.
