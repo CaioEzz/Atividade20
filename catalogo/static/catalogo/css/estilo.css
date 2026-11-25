@@ -1,0 +1,134 @@
+/* Estante Viva — estilos da listagem de livros */
+
+:root {
+    --papel: #f5efe3;
+    --papel-escuro: #ebe2d0;
+    --cartao: #fbf8f1;
+    --tinta: #2b2118;
+    --tinta-suave: #6b5b4b;
+    --bordo: #6d1f2c;
+    --bordo-escuro: #4f1520;
+    --ouro: #a98342;
+    --linha: #d9ccb4;
+    --serif-titulo: "Playfair Display", "Georgia", "Times New Roman", serif;
+    --serif-texto: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: var(--serif-texto);
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--tinta);
+    background:
+        radial-gradient(ellipse at top, #fbf6ea 0%, var(--papel) 55%, var(--papel-escuro) 100%);
+    min-height: 100vh;
+}
+.container { max-width: 880px; margin: 0 auto; padding: 48px 20px 64px; }
+
+/* Cabeçalho */
+header { text-align: center; margin-bottom: 36px; }
+.selo { font-size: 13px; letter-spacing: .35em; text-transform: uppercase; color: var(--ouro); margin-bottom: 6px; }
+h1 {
+    font-family: var(--serif-titulo);
+    font-size: clamp(40px, 7vw, 64px);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: .01em;
+    color: var(--bordo);
+}
+h1 em { font-style: italic; font-weight: 500; color: var(--tinta); }
+.sub { font-style: italic; color: var(--tinta-suave); margin: 8px 0 0; font-size: 20px; }
+.ornamento {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: 22px auto 0; max-width: 320px; color: var(--ouro); font-size: 18px;
+}
+.ornamento::before, .ornamento::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--ouro), transparent); }
+
+/* Formulário */
+form.filtros {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 14px 16px;
+    background: var(--cartao);
+    border: 1px solid var(--linha);
+    border-radius: 4px;
+    padding: 22px 22px 18px;
+    box-shadow: 0 1px 0 #fff inset, 0 10px 30px -18px rgba(43, 33, 24, .45);
+    margin-bottom: 22px;
+}
+.campo { display: flex; flex-direction: column; gap: 4px; }
+.campo label { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--tinta-suave); }
+input, select {
+    font-family: var(--serif-texto); font-size: 18px; color: var(--tinta);
+    background: #fffdf8; border: 1px solid var(--linha); border-radius: 3px;
+    padding: 9px 12px; width: 100%;
+}
+input:focus, select:focus { outline: none; border-color: var(--bordo); box-shadow: 0 0 0 3px rgba(109, 31, 44, .12); }
+.acoes { grid-column: 1 / -1; display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin-top: 4px; }
+button, .btn-limpar {
+    font-family: var(--serif-texto); font-size: 14px; letter-spacing: .16em; text-transform: uppercase;
+    font-weight: 600; padding: 10px 22px; border-radius: 3px; cursor: pointer; text-decoration: none;
+}
+button { background: var(--bordo); color: #f8efe0; border: 1px solid var(--bordo-escuro); transition: background .2s; }
+button:hover { background: var(--bordo-escuro); }
+.btn-limpar { color: var(--tinta-suave); border: 1px solid var(--linha); background: transparent; }
+.btn-limpar:hover { color: var(--bordo); border-color: var(--bordo); }
+
+.resumo { color: var(--tinta-suave); font-style: italic; margin: 0 0 14px; text-align: center; }
+
+/* Livros */
+.livro {
+    position: relative;
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;
+    background: var(--cartao);
+    border: 1px solid var(--linha);
+    border-left: 5px solid var(--bordo);
+    border-radius: 3px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 22px -18px rgba(43, 33, 24, .55);
+    transition: transform .2s, box-shadow .2s;
+}
+.livro:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -18px rgba(43, 33, 24, .6); }
+.livro h2 { font-family: var(--serif-titulo); font-size: 23px; line-height: 1.25; margin: 0 0 4px; font-weight: 600; }
+.autor { font-style: italic; color: var(--bordo); font-size: 19px; margin: 0 0 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.tag {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    border: 1px solid var(--ouro); color: #7a5c24; border-radius: 2px; padding: 2px 9px;
+}
+.meta { color: var(--tinta-suave); margin: 6px 0 0; }
+.nota {
+    flex-shrink: 0; width: 64px; height: 64px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 2px double var(--ouro); color: var(--bordo);
+    font-family: var(--serif-titulo); font-size: 20px; font-weight: 700; line-height: 1;
+    background: #fffaf0;
+}
+.nota small { font-family: var(--serif-texto); font-size: 11px; letter-spacing: .1em; color: var(--ouro); margin-top: 3px; font-weight: 600; }
+
+.vazio {
+    text-align: center; padding: 48px 20px; color: var(--tinta-suave); font-style: italic; font-size: 20px;
+    background: var(--cartao); border: 1px dashed var(--linha); border-radius: 3px;
+}
+
+/* Paginação */
+.paginacao { display: flex; justify-content: center; align-items: center; gap: 22px; margin-top: 30px; flex-wrap: wrap; }
+.paginacao a, .paginacao .off {
+    font-size: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+    padding: 9px 18px; border-radius: 3px; text-decoration: none; border: 1px solid var(--bordo);
+}
+.paginacao a { color: var(--bordo); }
+.paginacao a:hover { background: var(--bordo); color: #f8efe0; }
+.paginacao .off { color: #b3a58f; border-color: var(--linha); }
+.paginacao .atual { font-style: italic; color: var(--tinta-suave); }
+
+footer { text-align: center; margin-top: 44px; color: var(--ouro); font-size: 14px; letter-spacing: .3em; text-transform: uppercase; }
+
+@media (max-width: 700px) {
+    form.filtros { grid-template-columns: 1fr; }
+    .acoes { justify-content: stretch; }
+    .acoes button, .acoes .btn-limpar { flex: 1; text-align: center; }
+    .livro { padding: 16px; }
+}

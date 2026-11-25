@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estante Viva — Catálogo de Livros</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'catalogo/css/estilo.css' %}">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="selo">Biblioteca &amp; Catálogo</div>
+        <h1>Estante <em>Viva</em></h1>
+        <p class="sub">Catálogo de livros — pesquise, filtre e navegue.</p>
+        <div class="ornamento">❦</div>
+    </header>
+
+    <form method="get" class="filtros">
+        <div class="campo">
+            <label for="q">Título</label>
+            <input type="text" id="q" name="q" value="{{ busca }}" placeholder="Pesquisar por título do livro...">
+        </div>
+
+        <div class="campo">
+            <label for="autor">Autor</label>
+            <select id="autor" name="autor">
+                <option value="">Todos os autores</option>
+                {% for a in autores %}
+                    <option value="{{ a.id }}" {% if a.id|stringformat:"s" == autor_sel %}selected{% endif %}>{{ a.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="campo">
+            <label for="genero">Gênero</label>
+            <select id="genero" name="genero">
+                <option value="">Todos os gêneros</option>
+                {% for g in generos %}
+                    <option value="{{ g.id }}" {% if g.id|stringformat:"s" == genero_sel %}selected{% endif %}>{{ g.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="acoes">
+            <a class="btn-limpar" href="{% url 'catalogo:lista_livros' %}">Limpar</a>
+            <button type="submit">Filtrar</button>
+        </div>
+    </form>
+
+    <p class="resumo">{{ total_resultados }} livro{{ total_resultados|pluralize }} encontrado{{ total_resultados|pluralize }}</p>
+
+    {% for livro in page_obj %}
+        <article class="livro">
+            <div>
+                <h2>{{ livro.titulo }}</h2>
+                <p class="autor">{{ livro.autor.nome }}</p>
+                <div class="tags">
+                    <span class="tag">{{ livro.genero.nome }}</span>
+                    <span class="tag">{{ livro.ano_publicacao }}</span>
+                </div>
+                {% if livro.sinopse %}<p class="meta">{{ livro.sinopse }}</p>{% endif %}
+            </div>
+            <div class="nota">{{ livro.nota }}<small>NOTA</small></div>
+        </article>
+    {% empty %}
+        <div class="vazio">Nenhum livro encontrado com os filtros informados.</div>
+    {% endfor %}
+
+    {% if page_obj.paginator.num_pages > 1 %}
+    <nav class="paginacao">
+        {% if page_obj.has_previous %}
+            <a href="?{% if querystring %}{{ querystring }}&{% endif %}page={{ page_obj.previous_page_number }}">« Anterior</a>
+        {% else %}
+            <span class="off">« Anterior</span>
+        {% endif %}
+
+        <span class="atual">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?{% if querystring %}{{ querystring }}&{% endif %}page={{ page_obj.next_page_number }}">Próxima »</a>
+        {% else %}
+            <span class="off">Próxima »</span>
+        {% endif %}
+    </nav>
+    {% endif %}
+
+    <footer>❦ Estante Viva ❦</footer>
+</div>
+</body>
+</html>
