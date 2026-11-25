@@ -1,4 +1,4 @@
-# 📚 Estante Viva — Catálogo de Livros
+<img width="1844" height="893" alt="image" src="https://github.com/user-attachments/assets/3582ad88-29e6-41cd-a86e-9c625d794939" /><img width="1851" height="926" alt="image" src="https://github.com/user-attachments/assets/875fa0b6-cf38-422d-907d-fc941fc68ed2" /># 📚 Estante Viva — Catálogo de Livros
 
 **Disciplina:** Programação para Internet
 **Tecnologia:** Python + Django 5
@@ -49,6 +49,9 @@ python manage.py runserver
 Acesse: http://127.0.0.1:8000/
 
 ## Captura de tela
-![Listagem com filtros e paginação](docs/screenshot.png)
+<img width="1851" height="926" alt="image" src="https://github.com/user-attachments/assets/ed7146b0-737a-4b48-920c-e04d6bbebd8b" />
+<img width="1844" height="893" alt="image" src="https://github.com/user-attachments/assets/59fb3a67-bd4e-4d67-84e3-8a9f2f0087da" />
 
-> Tire a captura com filtros aplicados e paginação visível e salve em `docs/screenshot.png`.
+
+
+
